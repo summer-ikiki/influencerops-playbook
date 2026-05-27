@@ -211,6 +211,7 @@ small {
 }
 
 .funnel-grid,
+.scope-grid,
 .scorecard-grid,
 .review-grid {
   display: grid;
@@ -221,7 +222,12 @@ small {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
+.scope-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
 .funnel-step,
+.scope-grid article,
 .scorecard,
 .workflow-map article,
 .sequence article,
@@ -236,7 +242,12 @@ small {
   min-height: 150px;
 }
 
+.scope-grid article {
+  min-height: 220px;
+}
+
 .funnel-step strong,
+.scope-grid strong,
 .funnel-step span,
 .scorecard strong,
 .scorecard p {
@@ -248,7 +259,13 @@ small {
   font-size: 18px;
 }
 
+.scope-grid strong {
+  margin-bottom: 2px;
+  font-size: 20px;
+}
+
 .funnel-step span,
+.scope-grid p,
 .scorecard p,
 .workflow-map p,
 .sequence p {
@@ -258,6 +275,7 @@ small {
 }
 
 .funnel-step .zh,
+.scope-grid .zh,
 .scorecard .zh,
 .workflow-map .zh,
 .sequence .zh,
@@ -708,6 +726,7 @@ ul {
   }
 
   .funnel-grid,
+  .scope-grid,
   .principle-grid,
   .scorecard-grid,
   .workflow-map,
@@ -729,6 +748,7 @@ ul {
   .loop,
   .demo-mapping,
   .funnel-grid,
+  .scope-grid,
   .principle-grid,
   .scorecard-grid,
   .workflow-map,
