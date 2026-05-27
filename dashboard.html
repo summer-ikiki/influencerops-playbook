@@ -1,0 +1,252 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>InfluencerOps Demo</title>
+    <link rel="stylesheet" href="./styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <aside class="sidebar" aria-label="Primary">
+        <div class="brand">
+          <span class="brand-mark">IO</span>
+          <div>
+            <strong>InfluencerOps</strong>
+            <span>Campaign CRM demo</span>
+          </div>
+        </div>
+
+        <nav class="nav-list" id="navList">
+          <button class="nav-item active" data-view="overview" aria-label="Overview"><span>Overview</span></button>
+          <button class="nav-item" data-view="evaluation" aria-label="Creator evaluation"><span>Evaluation</span></button>
+          <button class="nav-item" data-view="outreach" aria-label="Outreach"><span>Outreach</span></button>
+          <button class="nav-item" data-view="pipeline" aria-label="Pipeline"><span>Pipeline</span></button>
+          <button class="nav-item" data-view="schedule" aria-label="Content and Delivery"><span>Content</span></button>
+          <button class="nav-item" data-view="payment" aria-label="Payment"><span>Payment</span></button>
+          <button class="nav-item" data-view="report" aria-label="Report"><span>Report</span></button>
+          <button class="nav-item" data-view="partners" aria-label="Long term partners"><span>Partners</span></button>
+        </nav>
+
+        <div class="filter-panel">
+          <label>
+            Campaign
+            <select id="campaignSelect">
+              <option>Demo May</option>
+              <option>Campus Launch</option>
+              <option>Creator Sprint</option>
+            </select>
+          </label>
+          <label>
+            Owner
+            <select id="ownerSelect">
+              <option>All owners</option>
+              <option>Jenny</option>
+              <option>Doris</option>
+              <option>Jialin</option>
+            </select>
+          </label>
+        </div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div>
+            <p class="eyebrow">AI-assisted influencer marketing workflow</p>
+            <h1 id="pageTitle">Campaign Overview</h1>
+          </div>
+          <div class="topbar-actions">
+            <button class="icon-button" id="refreshBtn" aria-label="Refresh dashboard" title="Refresh dashboard">R</button>
+            <button class="primary-button" id="demoAction">Run workflow</button>
+          </div>
+        </header>
+
+        <section class="view active" id="overview">
+          <div class="metric-grid">
+            <article class="metric">
+              <span>Total spend</span>
+              <strong id="totalSpend">$77,366</strong>
+              <small>Across active creators</small>
+            </article>
+            <article class="metric">
+              <span>Total views</span>
+              <strong id="totalViews">670,326</strong>
+              <small>Tracked from post links</small>
+            </article>
+            <article class="metric">
+              <span>Replies</span>
+              <strong id="replyCount">218</strong>
+              <small>Gmail outreach replies</small>
+            </article>
+            <article class="metric">
+              <span>Cost per signup</span>
+              <strong id="cps">$115.42</strong>
+              <small>Demo conversion model</small>
+            </article>
+          </div>
+
+          <div class="overview-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Weekly Activity</h2>
+                <span class="pill">Live demo</span>
+              </div>
+              <div class="bar-chart" aria-label="Weekly activity chart">
+                <span style="--h:72%"></span>
+                <span style="--h:48%"></span>
+                <span style="--h:64%"></span>
+                <span style="--h:37%"></span>
+                <span style="--h:83%"></span>
+                <span style="--h:55%"></span>
+                <span style="--h:69%"></span>
+              </div>
+            </article>
+
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Sourcing Funnel</h2>
+                <span class="pill muted">All data</span>
+              </div>
+              <div class="funnel">
+                <div><strong>1,654</strong><span>Contacted</span></div>
+                <div><strong>342</strong><span>Replied</span></div>
+                <div><strong>128</strong><span>Confirmed</span></div>
+                <div><strong>43</strong><span>Posted</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="evaluation">
+          <div class="split-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Creator Evaluation Gate</h2>
+                <span class="pill">14-day median first</span>
+              </div>
+              <div class="table-wrap">
+                <table>
+                  <thead>
+                    <tr><th>Creator</th><th>View median</th><th>School signal</th><th>Est. CPM</th><th>Decision</th></tr>
+                  </thead>
+                  <tbody id="evaluationTable"></tbody>
+                </table>
+              </div>
+            </article>
+            <article class="panel">
+              <div class="panel-header">
+                <h2>SOP Checks</h2>
+                <span class="pill muted">Before outreach</span>
+              </div>
+              <div class="rule-list">
+                <div><strong>50k+</strong><span>Trailing 14-day view median</span></div>
+                <div><strong>School</strong><span>Campus context, student bio, school-life posts</span></div>
+                <div><strong>Comments</strong><span>Real students over passive audience demos</span></div>
+                <div><strong>&lt; $20</strong><span>Target estimated CPM after negotiation</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="outreach">
+          <div class="split-grid">
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Email Sender</h2>
+                <span class="pill" id="queuedCount">5 queued</span>
+              </div>
+              <div class="creator-list" id="outreachList"></div>
+              <button class="primary-button wide" id="sendBatch">Send selected outreach</button>
+            </article>
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Duplicate Check</h2>
+                <span class="pill muted">Source of truth</span>
+              </div>
+              <div class="rule-list">
+                <div><strong>System</strong><span>Search Ditto Creator Influencer system</span></div>
+                <div><strong>Network</strong><span>Check whether an internal contact already follows them</span></div>
+                <div><strong>Pricing</strong><span>Negotiate at least once before approval</span></div>
+                <div><strong>Approval</strong><span>Log cost and content direction for Janine review</span></div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="pipeline">
+          <div class="kanban" id="kanban"></div>
+        </section>
+
+        <section class="view" id="schedule">
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Content Calendar</h2>
+              <span class="pill muted">Post links trigger tracking</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Date</th><th>Creator</th><th>Platform</th><th>Status</th><th>Post link</th></tr>
+                </thead>
+                <tbody id="scheduleTable"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="view" id="payment">
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Payment Queue</h2>
+              <span class="pill" id="paymentProgress">2/6 paid</span>
+            </div>
+            <div class="table-wrap">
+              <table>
+                <thead>
+                  <tr><th>Creator</th><th>Rate</th><th>Deliverable</th><th>Status</th><th></th></tr>
+                </thead>
+                <tbody id="paymentTable"></tbody>
+              </table>
+            </div>
+          </article>
+        </section>
+
+        <section class="view" id="report">
+          <div class="report-layout">
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Top Creators</h2>
+                <span class="pill">Auto-ranked</span>
+              </div>
+              <div class="ranking-list" id="rankingList"></div>
+            </article>
+            <article class="panel">
+              <div class="panel-header">
+                <h2>Review Metrics</h2>
+                <span class="pill muted">Actual vs estimated</span>
+              </div>
+              <ul class="takeaways">
+                <li>Actual CPM is compared against estimated CPM from trailing view median.</li>
+                <li>View achievement rate flags creators who outperform or miss their median baseline.</li>
+                <li>Comment quality and signup conversion determine long-term renewal priority.</li>
+              </ul>
+            </article>
+          </div>
+        </section>
+
+        <section class="view" id="partners">
+          <article class="panel">
+            <div class="panel-header">
+              <h2>Long-term Partners</h2>
+              <span class="pill muted">Repeat collaboration tracker</span>
+            </div>
+            <div class="partner-grid" id="partnerGrid"></div>
+          </article>
+        </section>
+      </main>
+    </div>
+
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+    <script src="./script.js"></script>
+  </body>
+</html>
